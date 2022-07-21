@@ -1,0 +1,30 @@
+{
+    "language": "Language",
+    "@language":{
+        "description": "Language"
+    },
+    "setting": "Setting",
+    "@setting":{
+        "description": "settings"
+    },
+    "english": "English",
+    "@english":{
+        "description": "default language"
+    },
+    "myanmar": "Myanmar",
+    "@myanmar":{
+        "description": "Myanamr Language"
+    },
+    "day": "Day",
+    "@Day":{
+        "description": "Day theme"
+    },
+    "night": "Night",
+    "@night":{
+        "description": "Night Theme"
+    },
+    "theme": "Theme",
+    "@theme":{
+        "description": "Theme"
+    }
+}
