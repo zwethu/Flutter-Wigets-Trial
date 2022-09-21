@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'dart:math' as math;
+import 'dart:math';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -11,30 +13,44 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   final TextEditingController controller = TextEditingController();
+  late Animation<double> animation;
+  late AnimationController animController;
+  bool isEmpty = false;
 
   @override
   void initState() {
-    controller.addListener(() {});
     super.initState();
+    controller.addListener(() {});
+    animController = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+    );
+    animation = Tween<double>(
+      begin: 0,
+      end: math.pi * 1.1,
+    ).chain(CurveTween(curve: Curves.ease)).animate(animController)
+      ..addListener(() {
+        // Empty setState because the updated value is already in the animation field
+        setState(() {});
+      })
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          animController.reverse();
+          isEmpty = !isEmpty;
+        } else if (status == AnimationStatus.dismissed) {
+          animController.forward();
+          isEmpty = !isEmpty;
+        }
+      });
+    animController.forward();
   }
 
   @override
   void dispose() {
     controller.dispose();
     super.dispose();
-  }
-
-  void getPath() async{
-    FilePickerResult? result = await FilePicker.platform.pickFiles();
-
-if (result != null) {
-  File file = File(result.files.single.path!);
-  print(file.path);
-} else {
-  // User canceled the picker
-}
   }
 
   @override
@@ -86,38 +102,27 @@ if (result != null) {
         },
         child: const Icon(Icons.add),
       ),
-      body: Column(
-        children: [
-          IconButton(
-            onPressed: () {
-              getPath();
-            },
-            icon: const Icon(Icons.access_alarm),
-          ),
-        ],
+      body: Transform.rotate(
+        angle: animation.value,
+        child: Center(
+          child: isEmpty
+              ? Icon(Icons.hourglass_top_rounded)
+              : Icon(
+                  Icons.hourglass_bottom_rounded,
+                ),
+        ),
       ),
     );
   }
 
-  // Future openDialogBox() {
-  //   return showDialog(
-  //     context: context,
-  //     builder: (context) => Hero(
-  //       tag: 'profile',
-  //       child: Dialog(
-  //         backgroundColor: Colors.transparent,
-  //         child: Container(
-  //           decoration: const BoxDecoration(
-  //             borderRadius: BorderRadius.all(
-  //               Radius.circular(25),
-  //             ),
-  //           ),
-  //           width: MediaQuery.of(context).size.width * 0.8,
-  //           height: 400,
-  //           child: Image.asset('images/makino.jpg',fit: BoxFit.fill,),
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
+  void getPath() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+    if (result != null) {
+      File file = File(result.files.single.path!);
+      print(file.path);
+    } else {
+      // User canceled the picker
+    }
+  }
 }
