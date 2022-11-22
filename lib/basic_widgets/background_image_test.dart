@@ -16,9 +16,9 @@ class _BackgroundImageTestState extends State<BackgroundImageTest> {
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage(
-            'images/raiden_shogun.png',
+            'assets/images/chika.jpg',
           ),
-          fit: BoxFit.fill,
+          fit: BoxFit.cover,
         ),
       ),
       child: Scaffold(

@@ -1,5 +1,7 @@
+
 import 'package:flutter/material.dart';
-import 'package:widgets_testing/constants.dart';
+import 'package:widgets_testing/models/data_model/drawer_item.dart';
+
 
 class DrawerScreen extends StatefulWidget {
   const DrawerScreen({Key? key}) : super(key: key);
@@ -9,38 +11,34 @@ class DrawerScreen extends StatefulWidget {
 }
 
 class _DrawerScreenState extends State<DrawerScreen> {
+  List<DrawerItem> items = [
+    DrawerItem('Basic Widget', '/basic_widgets'),
+    DrawerItem('Material Widgets', '/material_widgets'),
+    DrawerItem('Cupertino Widgets', '/cupertino_widgets'),
+    DrawerItem('Animations', '/animations'),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width * 0.5,
-          height: MediaQuery.of(context).size.height,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
-              child: Column(
-                children: [
-                  ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: items.length,
-                    itemBuilder: ((context, index) {
-                      return InkWell(
-                        onTap: () {
-                          Navigator.pushNamed(context, items[index].routeName);
-                        },
-                        child: ListTile(
-                          title: Text(
-                            items[index].title,
-                          ),
-                          subtitle: const Divider(),
-                        ),
-                      );
-                    }),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+          child: ListView.builder(
+            physics: const BouncingScrollPhysics(),
+            itemCount: items.length,
+            itemBuilder: ((context, index) {
+              return InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, items[index].routeName);
+                },
+                child: ListTile(
+                  title: Text(
+                    items[index].title,
                   ),
-                ],
-              ),
-            ),
+                ),
+              );
+            }),
           ),
         ),
       ),

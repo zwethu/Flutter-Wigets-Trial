@@ -9,6 +9,7 @@ class CheckBoxTest extends StatefulWidget {
 
 class _CheckBoxTestState extends State<CheckBoxTest> {
   List<bool> values = [false, false, false];
+  List<String> titles = ['A', 'B', 'C'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,21 +17,24 @@ class _CheckBoxTestState extends State<CheckBoxTest> {
       body: SafeArea(
         child: Center(
           child: ListView.builder(
+            shrinkWrap: true,
             itemCount: 3,
             itemBuilder: (BuildContext context, int index) {
-              return Checkbox(
+              return ListTile(
+                leading: Text(
+                  titles[index],
+                ),
+                title: Checkbox(
                   value: values[index],
                   onChanged: (a) {
-                    setState(() {
-                      if (index == 0) {
-                        for (int i = 0; i < 3; i++) {
-                          values[i] = a!;
-                        }
-                      } else {
+                    setState(
+                      () {
                         values[index] = a!;
-                      }
-                    });
-                  });
+                      },
+                    );
+                  },
+                ),
+              );
             },
           ),
         ),

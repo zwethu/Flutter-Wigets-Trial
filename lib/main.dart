@@ -1,21 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:widgets_testing/basic_widgets/basic_widgets.dart';
 import 'package:widgets_testing/l10n/l10n.dart';
-import 'package:widgets_testing/models/language_provider.dart';
-import 'package:widgets_testing/screens/home_page.dart';
-import 'package:widgets_testing/screens/profile_screen.dart';
-import 'package:widgets_testing/screens/setting_screen.dart';
-import 'package:widgets_testing/widgets/background_image_test.dart';
-import 'package:widgets_testing/widgets/checkbox_test.dart';
-import 'package:widgets_testing/widgets/dropdown_button.dart';
-import 'package:widgets_testing/widgets/gridview_builder_test.dart';
-import 'package:widgets_testing/widgets/listview_test.dart';
-import 'package:widgets_testing/widgets/radio_button.dart';
-import 'package:widgets_testing/widgets/refresh_button_test.dart';
-import 'package:widgets_testing/widgets/slider_test.dart';
-import 'package:widgets_testing/widgets/switch_test.dart';
+import 'package:widgets_testing/models/provider/language_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:widgets_testing/screens/screens.dart';
+
 
 void main(List<String> args) {
   runApp(const MyApp());
@@ -29,13 +20,19 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => LanguageProvider(),
       builder: (context, child) {
-        final provider = Provider.of<LanguageProvider>(context,listen: true);
+        final provider = Provider.of<LanguageProvider>(context, listen: true);
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           home: const Home(),
           routes: {
+            //screens
             '/setting': (context) => const SettingScreen(),
             '/profile': (context) => const ProfileScreen(),
+            '/basic_widgets': (context) => const BasicWidgetsScreen(),
+            '/material_widgets': (context) => const MaterialWidgetsScreen(),
+            '/cupertino_widgets': (context) => const CupertinoWidgetsScreen(),
+            '/animations': (context) => const AnimationsScreen(),
+            //widgets
             '/background_image': (context) => const BackgroundImageTest(),
             '/checkbox': (context) => const CheckBoxTest(),
             '/circular_progress_indicator': (context) =>
