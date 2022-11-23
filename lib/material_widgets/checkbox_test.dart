@@ -24,7 +24,7 @@ class _CheckBoxTestState extends State<CheckBoxTest> {
                 leading: Text(
                   titles[index],
                 ),
-                title: Checkbox(
+                trailing: Checkbox(
                   value: values[index],
                   onChanged: (a) {
                     setState(

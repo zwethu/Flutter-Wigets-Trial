@@ -9,17 +9,10 @@ class BasicWidgetsScreen extends StatefulWidget {
 }
 
 class _BasicWidgetsScreenState extends State<BasicWidgetsScreen> {
-    List<WidgetItem> items = [
+  List<WidgetItem> items = [
     WidgetItem('BackgroundImage', '/background_image'),
-    WidgetItem('CheckBox', '/checkbox'),
-    WidgetItem('CircularIndicator', '/circular_progress_indicator'),
-    WidgetItem('DropdownButton', '/dropdown_button'),
     WidgetItem('Gridview Builder', '/gridview'),
     WidgetItem('Listview Builder', '/listview'),
-    WidgetItem('Radio Button', '/radio_button'),
-    WidgetItem('Refresh Button', '/refresh_button'),
-    WidgetItem('Slider Button', '/slider'),
-    WidgetItem('Swich Button', '/switch'),
   ];
   @override
   Widget build(BuildContext context) {

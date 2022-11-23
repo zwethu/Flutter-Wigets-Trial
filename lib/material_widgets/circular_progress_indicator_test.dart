@@ -14,13 +14,15 @@ class _CircularBarState extends State<CircularBar> {
       appBar: AppBar(),
       body: const SafeArea(
         child: Center(
-          child: CircularProgressIndicator(
-            backgroundColor: Colors.blue,
-            color: Colors.black,
-            semanticsLabel: 'hello',
-            semanticsValue: 'hi',
-            valueColor: AlwaysStoppedAnimation<Color>(
-              Color(0xfffd7013),
+          child: SizedBox(
+            width: 100,
+            height: 100,
+            child: CircularProgressIndicator(
+              backgroundColor: Colors.blue,
+              color: Colors.black,
+              semanticsLabel: 'hello',
+              semanticsValue: 'hi',
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
             ),
           ),
         ),

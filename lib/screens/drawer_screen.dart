@@ -27,7 +27,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
           child: ListView.builder(
             physics: const BouncingScrollPhysics(),
             itemCount: items.length,
-            itemBuilder: ((context, index) {
+            itemBuilder: (context, index) {
               return InkWell(
                 onTap: () {
                   Navigator.pushNamed(context, items[index].routeName);
@@ -38,7 +38,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                   ),
                 ),
               );
-            }),
+            },
           ),
         ),
       ),

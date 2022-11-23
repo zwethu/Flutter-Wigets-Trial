@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:widgets_testing/basic_widgets/basic_widgets.dart';
+import 'package:widgets_testing/material_widgets/material_widgets.dart';
 import 'package:widgets_testing/l10n/l10n.dart';
 import 'package:widgets_testing/models/provider/language_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
             '/background_image': (context) => const BackgroundImageTest(),
             '/checkbox': (context) => const CheckBoxTest(),
             '/circular_progress_indicator': (context) =>
-                const CircularProgressIndicator(),
+                const CircularBar(),
             '/dropdown_button': (context) => const DropdownBox(),
             '/gridview': (context) => const GridviewBuilderTest(),
             '/listview': (context) => const ListviewTest(),

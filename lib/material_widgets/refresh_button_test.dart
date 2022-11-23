@@ -18,19 +18,20 @@ class _RefreshButtonTestState extends State<RefreshButtonTest> {
       body: SafeArea(
         child: Center(
           child: RefreshIndicator(
-            triggerMode: RefreshIndicatorTriggerMode.onEdge,
+              triggerMode: RefreshIndicatorTriggerMode.onEdge,
               child: ListView.builder(
                 itemCount: 10,
                 itemBuilder: (BuildContext context, int index) {
-                  return Container(
+                  return const SizedBox(
                     height: 200,
-                    color: Colors.blue,
-                    child: const Text('hello'),
+                    child: Center(
+                      child: Text('hello'),
+                    ),
                   );
                 },
               ),
               onRefresh: () async {
-                Future.delayed(const Duration(seconds: 2), () {
+                Future.delayed(const Duration(milliseconds: 100), () {
                   setState(() {
                     count++;
                   });
