@@ -24,7 +24,7 @@ class _SandClockAnimationState extends State<SandClockAnimation>
     );
     animation = Tween<double>(
       begin: 0,
-      end: math.pi * 1.1,
+      end: math.pi,
     ).chain(CurveTween(curve: Curves.ease)).animate(animController)
       ..addListener(() {
         // Empty setState because the updated value is already in the animation field
@@ -51,6 +51,7 @@ class _SandClockAnimationState extends State<SandClockAnimation>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Center(
         child: Transform.rotate(
           angle: animation.value,
