@@ -11,6 +11,20 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  late File file;
+  bool isSelected = false;
+  Future getPath() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+    if (result != null) {
+      file = File(result.files.single.path!);
+      
+    } else {
+      // User canceled the picker
+      return;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,28 +38,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ],
       ),
-      body: const SafeArea(
-        child: Center(
-          child: Hero(
-            tag: 'profile_1',
-            child: CircleAvatar(
-              radius: 150,
-              foregroundImage: AssetImage('assets/images/raiden_shogun.png'),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Hero(
+              tag: 'profile_1',
+              child: CircleAvatar(
+                radius: 150,
+                foregroundImage: isSelected
+                    ? FileImage(file)
+                    : const AssetImage('assets/images/raiden_shogun.png'),
+              ),
             ),
-          ),
+            TextButton(
+              onPressed: () async {
+                getPath();
+
+                setState(() {
+                  isSelected = true;
+                });
+              },
+              child: const Text('Change Porfile'),
+            ),
+          ],
         ),
       ),
     );
-  }  
-}
-
- void getPath() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles();
-
-    if (result != null) {
-      File file = File(result.files.single.path!);
-      assert(false, file.path);
-    } else {
-      // User canceled the picker
-    }
   }
+}
