@@ -17,8 +17,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
     FilePickerResult? result = await FilePicker.platform.pickFiles();
 
     if (result != null) {
-      file = File(result.files.single.path!);
-      
+      setState(() {
+        file = File(result.files.single.path!);
+      });
     } else {
       // User canceled the picker
       return;
@@ -39,28 +40,69 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ],
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            Hero(
-              tag: 'profile_1',
-              child: CircleAvatar(
-                radius: 150,
-                foregroundImage: isSelected
-                    ? FileImage(file)
-                    : const AssetImage('assets/images/raiden_shogun.png'),
-              ),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 8,
+              horizontal: 16,
             ),
-            TextButton(
-              onPressed: () async {
-                getPath();
-
-                setState(() {
-                  isSelected = true;
-                });
-              },
-              child: const Text('Change Porfile'),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                isSelected
+                    ? Hero(
+                        tag: 'profile_1',
+                        child: CircleAvatar(
+                          radius: 150,
+                          foregroundImage: FileImage(file),
+                        ),
+                      )
+                    : const Hero(
+                        tag: 'profile_1',
+                        child: CircleAvatar(
+                          radius: 150,
+                          foregroundImage:
+                              AssetImage('assets/images/raiden_shogun.png'),
+                        ),
+                      ),
+                const SizedBox(
+                  height: 50,
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.blue,
+                      width: 2,
+                    ),
+                  ),
+                  child: TextButton(
+                    onPressed: () async {
+                      await getPath();
+                      setState(() {
+                        isSelected = true;
+                      });
+                    },
+                    style: ButtonStyle(
+                      minimumSize: MaterialStateProperty.all(
+                        const Size(
+                          150,
+                          50,
+                        ),
+                      ),
+                      maximumSize: MaterialStateProperty.all(
+                        Size(
+                          MediaQuery.of(context).size.width,
+                          50,
+                        ),
+                      ),
+                    ),
+                    child: const Text('Change Profile'),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
