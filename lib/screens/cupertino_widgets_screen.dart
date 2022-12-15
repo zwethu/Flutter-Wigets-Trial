@@ -12,7 +12,7 @@ class _CupertinoWidgetsScreenState extends State<CupertinoWidgetsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Placeholder(),
+      body: const Placeholder(),
     );
   }
 }
