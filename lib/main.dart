@@ -48,6 +48,7 @@ class MyApp extends StatelessWidget {
             '/refresh_button': (context) => const RefreshButtonTest(),
             '/slider': (context) => const SliderTest(),
             '/switch': (context) => const SwitchTest(),
+            '/expansion_panel': (context) => const ExpansionPanelListWidget(),
             //
             //animations
             '/sand_clock_animation': (context) => const SandClockAnimation(),
