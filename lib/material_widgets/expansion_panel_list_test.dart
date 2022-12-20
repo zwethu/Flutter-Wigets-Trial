@@ -23,6 +23,7 @@ class _ExpansionPanelListWidgetState extends State<ExpansionPanelListWidget> {
           },
           children: data.map<ExpansionPanel>((PanelItem panelItem) {
             return ExpansionPanel(
+              canTapOnHeader: true,
               headerBuilder: (context, isExpanded) => ListTile(
                 title: Text(panelItem.headerValue),
               ),

@@ -4,6 +4,7 @@ import 'package:widgets_testing/animations/animations.dart';
 import 'package:widgets_testing/basic_widgets/basic_widgets.dart';
 import 'package:widgets_testing/material_widgets/material_widgets.dart';
 import 'package:widgets_testing/l10n/l10n.dart';
+import 'package:widgets_testing/material_widgets/stepper_test.dart';
 import 'package:widgets_testing/models/provider/providers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -49,6 +50,7 @@ class MyApp extends StatelessWidget {
             '/slider': (context) => const SliderTest(),
             '/switch': (context) => const SwitchTest(),
             '/expansion_panel': (context) => const ExpansionPanelListWidget(),
+            '/stepper':(context) => const StepperTest(),
             //
             //animations
             '/sand_clock_animation': (context) => const SandClockAnimation(),
