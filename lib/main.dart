@@ -51,6 +51,7 @@ class MyApp extends StatelessWidget {
             '/switch': (context) => const SwitchTest(),
             '/expansion_panel': (context) => const ExpansionPanelListWidget(),
             '/stepper':(context) => const StepperTest(),
+            '/data_table':(context) => const DataTableTest(),
             //
             //animations
             '/sand_clock_animation': (context) => const SandClockAnimation(),

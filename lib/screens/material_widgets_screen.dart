@@ -19,6 +19,7 @@ class _MaterialWidgetsScreenState extends State<MaterialWidgetsScreen> {
     WidgetItem('Swich Button', '/switch'),
     WidgetItem('Expansion Panel List', '/expansion_panel'),
     WidgetItem('Stepper', '/stepper'),
+    WidgetItem('DataTable', '/data_table'),
   ];
   @override
   Widget build(BuildContext context) {
