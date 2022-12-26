@@ -6,3 +6,6 @@ export 'package:widgets_testing/material_widgets/checkbox_test.dart';
 export 'package:widgets_testing/material_widgets/dropdown_button.dart';
 export 'package:widgets_testing/material_widgets/radio_button.dart';
 export 'package:widgets_testing/material_widgets/circular_progress_indicator_test.dart';
+export 'package:widgets_testing/material_widgets/linear_progress_indicator_test.dart';
+export 'package:widgets_testing/material_widgets/data_table_test.dart';
+export 'package:widgets_testing/material_widgets/stepper_test.dart';

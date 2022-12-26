@@ -20,6 +20,7 @@ class _MaterialWidgetsScreenState extends State<MaterialWidgetsScreen> {
     WidgetItem('Expansion Panel List', '/expansion_panel'),
     WidgetItem('Stepper', '/stepper'),
     WidgetItem('DataTable', '/data_table'),
+    WidgetItem('Linear Progress Indicator', '/linear_progress_indicator'),
   ];
   @override
   Widget build(BuildContext context) {
